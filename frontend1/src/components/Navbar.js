@@ -7,7 +7,7 @@ const Navbar = () => {
       <div className="container">
         <Link to="/">
           <h1>Welcome To <span style={{ color: 'darkred' } }><b>CAMBRIDGE</b></span> 
-          <img className='Act-logo' src='Logo.jpg' ></img>
+          <img className='Act-logo' src='Logo.jpg' alt="Cambridge Logo"></img>
           
           </h1> 
         

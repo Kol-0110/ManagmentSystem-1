@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
+import { API_URL } from '../config'
 
 const WorkoutForm = () => { 
   const { dispatch } = useWorkoutsContext()
@@ -22,7 +23,7 @@ const WorkoutForm = () => {
     const workout = {firstName, lastname, address, phone}
     
     try {
-      const response = await fetch('/api/workouts', {
+      const response = await fetch(`${API_URL}/api/workouts`, {
         method: 'POST',
         body: JSON.stringify(workout),
         headers: {
@@ -57,6 +58,7 @@ const WorkoutForm = () => {
         }, 3500)
       }
     } catch (err) {
+      console.error('Submission error:', err)
       setError('Failed to send application. Please try again.')
     }
   }

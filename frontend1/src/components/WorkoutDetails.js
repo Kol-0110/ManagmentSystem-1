@@ -1,4 +1,5 @@
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
+import { API_URL } from '../config'
 
 // date fns
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
@@ -7,13 +8,19 @@ const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext()
 
   const handleClick = async () => {
-    const response = await fetch('/api/workouts/' + workout._id, {
-      method: 'DELETE'
-    })
-    const json = await response.json()
+    try {
+      const response = await fetch(`${API_URL}/api/workouts/${workout._id}`, {
+        method: 'DELETE'
+      })
+      const json = await response.json()
 
-    if (response.ok) {
-      dispatch({type: 'DELETE_WORKOUT', payload: json})
+      if (response.ok) {
+        dispatch({type: 'DELETE_WORKOUT', payload: json})
+      } else {
+        console.error('Delete failed:', json)
+      }
+    } catch (err) {
+      console.error('Delete request error:', err)
     }
   }
 

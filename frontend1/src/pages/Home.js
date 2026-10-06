@@ -13,7 +13,7 @@ export default function Home() {
       <Navbar className='text-color' collapseOnSelect expand="lg" bg=''>
       <Container>
         <Navbar.Brand href="#home">
-          <img className='Act-logo' src='Logo.jpg' ></img>
+          <img className='Act-logo' src='Logo.jpg' alt="Cambridge Logo"></img>
       <b></b><br></br>
       <span  style={{ color: 'darkred' } }>CAMBRIDGE INTERNATIONAL SCHOOL</span>
 
@@ -137,7 +137,7 @@ export default function Home() {
        <span ><b className='white-color'> <span style={{color:'darkred'}}>CAMBRIDGE</span> is built for outcomes</b></span> 
        <div className='grad'>
  <div className='col-6 col-s-9' >
-       <img  src='Side.png' ></img>
+       <img src='Side.png' alt="Institutional Impact" ></img>
        </div>
   </div>
        </div>  
