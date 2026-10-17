@@ -15,7 +15,7 @@ const WorkoutDetails = ({ workout }) => {
       const json = await response.json()
 
       if (response.ok) {
-        dispatch({type: 'DELETE_WORKOUT', payload: json})
+        dispatch({ type: 'DELETE_WORKOUT', payload: json })
       } else {
         console.error('Delete failed:', json)
       }
@@ -32,8 +32,8 @@ const WorkoutDetails = ({ workout }) => {
       <td>{workout.phone}</td>
       <td>{formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}</td>
       <td>
-        <span 
-          className="material-symbols-outlined table-delete-btn" 
+        <span
+          className="material-symbols-outlined table-delete-btn"
           onClick={handleClick}
           title="Delete"
         >

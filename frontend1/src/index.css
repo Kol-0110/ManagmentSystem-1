@@ -1523,6 +1523,779 @@ button.submit-btn:active {
   font-size: 15px;
 }
 
+/* ==========================================================================
+   Login Page Styling
+   ========================================================================== */
+.login-page-wrapper {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 50%, #e2e8f0 100%);
+  box-sizing: border-box;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 440px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 38px 32px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e2e8f0;
+  box-sizing: border-box;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.login-logo {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  background-color: #f8fafc;
+  padding: 4px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.login-title {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a202c;
+  letter-spacing: -0.3px;
+}
+
+.login-title span {
+  color: darkred;
+}
+
+.login-subtitle {
+  margin: 0;
+  font-size: 13.5px;
+  color: #64748b;
+  font-weight: 400;
+}
+
+.login-alert {
+  padding: 11px 14px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.4;
+}
+
+.login-alert-error {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.login-alert-success {
+  background-color: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+}
+
+.login-alert-info {
+  background-color: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+  font-size: 12.5px;
+}
+
+.login-field {
+  margin-bottom: 16px;
+}
+
+.login-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.login-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-input-icon {
+  position: absolute;
+  left: 14px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.login-input-wrapper input {
+  width: 100% !important;
+  padding: 11px 40px 11px 42px !important;
+  margin: 0 !important;
+  border: 1.5px solid #cbd5e1 !important;
+  border-radius: 8px !important;
+  font-family: inherit !important;
+  font-size: 14px !important;
+  color: #1e293b !important;
+  background: #ffffff !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.login-input-wrapper input:focus {
+  outline: none !important;
+  border-color: darkred !important;
+  box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.12) !important;
+}
+
+.login-input-wrapper input.input-error {
+  border-color: #ef4444 !important;
+  background-color: #fffafb !important;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent !important;
+  border: none !important;
+  color: #64748b !important;
+  cursor: pointer;
+  padding: 4px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: color 0.15s ease;
+}
+
+.password-toggle-btn:hover {
+  color: #0f172a !important;
+}
+
+.login-options-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 6px 0 20px 0;
+  font-size: 13px;
+}
+
+.login-checkbox-label {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 400;
+  margin: 0 !important;
+}
+
+.login-checkbox-label input[type="checkbox"] {
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 !important;
+  accent-color: darkred;
+  cursor: pointer;
+}
+
+.forgot-password-link {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  color: darkred !important;
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: text-decoration 0.2s;
+}
+
+.forgot-password-link:hover {
+  text-decoration: underline;
+}
+
+.login-submit-btn {
+  width: 100% !important;
+  padding: 12px !important;
+  background: linear-gradient(135deg, #8B0000 0%, #6d0000 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 14.5px !important;
+  letter-spacing: 0.3px;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(139, 0, 0, 0.2) !important;
+}
+
+.login-submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #9b0000 0%, #7d0000 100%) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(139, 0, 0, 0.28) !important;
+}
+
+.login-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.login-spinner {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.demo-credentials-box {
+  margin-top: 18px;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.demo-credentials-title {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.demo-credentials-code {
+  font-size: 12.5px;
+  color: #1e293b;
+  font-family: monospace;
+  margin-bottom: 8px;
+}
+
+.demo-fill-btn {
+  background: #e2e8f0 !important;
+  color: #334155 !important;
+  border: none !important;
+  padding: 5px 12px !important;
+  border-radius: 6px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.demo-fill-btn:hover {
+  background: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+.login-divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0 16px 0;
+  color: #94a3b8;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.login-divider::before,
+.login-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.login-divider span {
+  padding: 0 10px;
+}
+
+.login-footer-links {
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.login-footer-links p {
+  margin: 0 0 8px 0;
+}
+
+.login-footer-links a {
+  color: darkred;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-footer-links a:hover {
+  text-decoration: underline;
+}
+
+.login-back-home {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: #64748b !important;
+  text-decoration: none;
+  font-weight: 500 !important;
+  transition: color 0.15s ease;
+}
+
+.login-back-home:hover {
+  color: #1e293b !important;
+}
+
+/* ========================================================
+   Sign Up Page Styles
+   ======================================================== */
+.account-type-badge {
+  display: inline-block;
+  margin-top: 6px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: darkred;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.enrollment-switch-box {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: #475569;
+}
+
+.enroll-switch-link {
+  color: darkred !important;
+  font-weight: 600 !important;
+}
+
+/* ========================================================
+   Super Admin Role Management Page Styles
+   ======================================================== */
+.role-management-page {
+  min-height: calc(100vh - 80px);
+  background: #f8fafc;
+  padding: 30px 20px 60px;
+}
+
+.role-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.role-header-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px 28px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+}
+
+.role-header-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.role-crown-icon {
+  font-size: 36px;
+  background: #fffbeb;
+  border: 1px solid #fef3c7;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+.role-header-info h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 4px;
+}
+
+.role-header-info p {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0;
+}
+
+.role-header-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-secondary-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: #f1f5f9;
+  color: #334155;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.btn-secondary-link:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.btn-refresh {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-refresh:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+/* Stats Cards */
+.role-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.role-stat-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.card-superadmin {
+  border-left: 4px solid #b8860b;
+}
+
+.card-admin {
+  border-left: 4px solid #1e3a8a;
+}
+
+.card-user {
+  border-left: 4px solid #059669;
+}
+
+.stat-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* Filters Row */
+.role-filters-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.search-input-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 8px 14px;
+  flex: 1;
+  max-width: 450px;
+}
+
+.search-input-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  background: transparent;
+}
+
+.role-select-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.role-select-box select {
+  padding: 7px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 13.5px;
+  outline: none;
+}
+
+/* Users Table */
+.role-table-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow-x: auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+}
+
+.role-users-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.role-users-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 14px 18px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.role-users-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 13.5px;
+  color: #1e293b;
+  vertical-align: middle;
+}
+
+.role-users-table tr:hover {
+  background: #fbfcfe;
+}
+
+.user-profile-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  color: #ffffff;
+}
+
+.avatar-superadmin {
+  background: linear-gradient(135deg, #b8860b, #d97706);
+}
+
+.avatar-admin {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+}
+
+.avatar-user {
+  background: linear-gradient(135deg, #059669, #10b981);
+}
+
+.user-fullname {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.user-username {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Badges */
+.role-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.badge-superadmin {
+  background: #fffbeb;
+  color: #b8860b;
+  border: 1px solid #fef3c7;
+}
+
+.badge-admin {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #dbeafe;
+}
+
+.badge-user {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #d1fae5;
+}
+
+.status-pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.status-active {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status-suspended {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.protected-tag {
+  font-size: 12px;
+  font-weight: 600;
+  color: #b8860b;
+  background: #fffbeb;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px dashed #fef3c7;
+}
+
+.action-buttons-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn-action {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-promote {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+
+.btn-promote:hover:not(:disabled) {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.btn-demote {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.btn-demote:hover:not(:disabled) {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+.btn-suspend {
+  background: #f8fafc;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+}
+
+.btn-suspend:hover:not(:disabled) {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+}
+
+.btn-activate {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+
+.btn-activate:hover:not(:disabled) {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.btn-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+
 
 
 

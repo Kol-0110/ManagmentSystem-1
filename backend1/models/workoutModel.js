@@ -18,7 +18,13 @@ const workoutSchema = new Schema({
   phone: {
     type: Number,
     required: true
+  },
+  pass: {
+    type: String,
+    required: true
   }
+
+
 }, { timestamps: true })
 
 module.exports = mongoose.model('Workout', workoutSchema)

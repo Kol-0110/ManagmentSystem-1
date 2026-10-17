@@ -1,0 +1,13 @@
+{
+  "name": "cambridge-management-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cambridge Management System with RBAC and Super Admin controls",
+  "scripts": {
+    "start": "npm run start --prefix frontend1",
+    "frontend": "npm run start --prefix frontend1",
+    "backend": "npm run dev --prefix backend1",
+    "dev:backend": "npm run dev --prefix backend1",
+    "build": "npm run build --prefix frontend1"
+  }
+}

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
 import { API_URL } from '../config'
 
-const WorkoutForm = () => { 
+const WorkoutForm = () => {
   const { dispatch } = useWorkoutsContext()
   const navigate = useNavigate()
 
@@ -11,6 +11,7 @@ const WorkoutForm = () => {
   const [lastname, setLastname] = useState('')
   const [address, setAddress] = useState('')
   const [phone, setPhone] = useState('')
+  const [pass, setPass] = useState('')
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
   const [isSuccess, setIsSuccess] = useState(false)
@@ -20,8 +21,8 @@ const WorkoutForm = () => {
     setIsSuccess(false)
     setError(null)
 
-    const workout = {firstName, lastname, address, phone}
-    
+    const workout = { firstName, lastname, address, phone, pass }
+
     try {
       const response = await fetch(`${API_URL}/api/workouts`, {
         method: 'POST',
@@ -43,10 +44,11 @@ const WorkoutForm = () => {
         setLastname('')
         setAddress('')
         setPhone('')
+        setPass('')
         setIsSuccess(true)
         if (dispatch) {
           try {
-            dispatch({type: 'CREATE_WORKOUT', payload: json})
+            dispatch({ type: 'CREATE_WORKOUT', payload: json })
           } catch (dispatchErr) {
             console.error('Dispatch error:', dispatchErr)
           }
@@ -64,39 +66,55 @@ const WorkoutForm = () => {
   }
 
   return (
-    <form className="create" onSubmit={handleSubmit}> 
-      <h2>Thank You For Applying!  <img className='Act-logo' src='Logo.jpg' alt="Logo"></img></h2>
+    <form className="create" onSubmit={handleSubmit}>
+      <h2>Student Admission Registration  <img className='Act-logo' src='/Logo.jpg' alt="Logo"></img></h2>
+      <p style={{ color: '#64748b', fontSize: '13px', margin: '-4px 0 16px', lineHeight: 1.4 }}>
+        Official student enrollment record. If you need a staff or portal login account, please visit <span style={{ fontWeight: '600', color: 'darkred' }}>Sign Up</span>.
+      </p>
 
       <label>First Name:</label>
-      <input 
-        type="text" 
-        onChange={(e) => setFirstName(e.target.value)} 
+      <input
+        type="text"
+        placeholder="Student first name"
+        onChange={(e) => setFirstName(e.target.value)}
         value={firstName}
         className={emptyFields.includes('firstName') ? 'error' : ''}
       />
 
       <label>Last Name:</label>
-      <input 
-        type="text" 
-        onChange={(e) => setLastname(e.target.value)} 
+      <input
+        type="text"
+        placeholder="Student last name"
+        onChange={(e) => setLastname(e.target.value)}
         value={lastname}
         className={emptyFields.includes('lastname') ? 'error' : ''}
       />
 
       <label>Address:</label>
-      <input 
-        type="text" 
-        onChange={(e) => setAddress(e.target.value)} 
+      <input
+        type="text"
+        placeholder="Residential address"
+        onChange={(e) => setAddress(e.target.value)}
         value={address}
         className={emptyFields.includes('address') ? 'error' : ''}
       />
 
       <label>Phone Number:</label>
-      <input 
-        type="number" 
-        onChange={(e) => setPhone(e.target.value)} 
+      <input
+        type="number"
+        placeholder="e.g. 0712345678"
+        onChange={(e) => setPhone(e.target.value)}
         value={phone}
         className={emptyFields.includes('phone') ? 'error' : ''}
+      />
+
+      <label>Student Portal Access Password (Optional):</label>
+      <input
+        type="password"
+        placeholder="Optional student portal password"
+        onChange={(e) => setPass(e.target.value)}
+        value={pass}
+        className={emptyFields.includes('pass') ? 'error' : ''}
       />
 
       <button className="submit-btn" type="submit">
@@ -114,7 +132,7 @@ const WorkoutForm = () => {
           </div>
         </div>
       )}
-    </form> 
+    </form>
   )
 }
 

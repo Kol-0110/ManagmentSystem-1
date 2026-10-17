@@ -3,11 +3,15 @@ const {
   getWorkouts, 
   getWorkout, 
   createWorkout, 
+  loginWorkout,
   deleteWorkout, 
   updateWorkout
 } = require('../controllers/workoutController')
 
 const router = express.Router()
+
+// POST login
+router.post('/login', loginWorkout)
 
 // GET all workouts
 router.get('/', getWorkouts)
