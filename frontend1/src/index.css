@@ -52,20 +52,88 @@ body {
   font-family: "Poppins";
   padding: 0;
 }
-header {
+.site-header {
   background: #fff;
 }
-header .container {
+.site-header-inner {
   max-width: 1400px;
   margin: 0 auto;
   padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
 }
-header a {
-  color: #333;
+.site-header a {
   text-decoration: none;
+}
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #333;
+  font-size: 1.15rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.site-brand strong {
+  color: darkred;
+}
+.site-brand .Act-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+.site-nav,
+.site-account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+.site-nav-link {
+  color: darkred;
+  font: inherit;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.site-nav-link:hover {
+  color: #7f1d1d;
+  text-decoration: underline;
+}
+.site-role-badge {
+  padding: 4px 10px;
+  border: 1px solid #c7d2fe;
+  border-radius: 20px;
+  background: #eef2ff;
+  color: #1e3a8a;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.site-role-badge-superadmin {
+  border-color: #ffeeba;
+  background: #fff3cd;
+  color: #856404;
+}
+.site-logout {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .site-header-inner {
+    justify-content: center;
+    padding: 10px 16px;
+  }
+  .site-nav,
+  .site-account {
+    width: 100%;
+  }
 }
 
 
@@ -2293,7 +2361,6 @@ button.submit-btn:active {
   opacity: 0.5;
   cursor: not-allowed;
 }
-
 
 
 
