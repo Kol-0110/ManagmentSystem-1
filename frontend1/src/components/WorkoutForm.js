@@ -54,9 +54,24 @@ const WorkoutForm = () => {
           }
         }
 
-        // Automatically redirect to homepage after showing the confirmation card
+        // Check user role: redirect to Students for admins, or Homepage for regular users
+        const rawUser = localStorage.getItem('cambridge_user') || sessionStorage.getItem('cambridge_user')
+        let user = null
+        try {
+          user = rawUser ? JSON.parse(rawUser) : null
+        } catch (e) {
+          user = null
+        }
+        const role = user?.role?.toLowerCase()
+        const canViewStudents = role === 'admin' || role === 'superadmin' || role === 'administrator'
+
+        // Automatically redirect after showing confirmation card
         setTimeout(() => {
-          navigate('/Students')
+          if (canViewStudents) {
+            navigate('/Students')
+          } else {
+            navigate('/')
+          }
         }, 3500)
       }
     } catch (err) {
@@ -128,7 +143,18 @@ const WorkoutForm = () => {
           <i className="fa-solid fa-circle-check success-icon"></i>
           <div className="success-content">
             <h4>Application Successfully Sent!</h4>
-            <p>Thank you for submitting. Redirecting to Students Table...</p>
+            <p>
+              {(() => {
+                const rawUser = localStorage.getItem('cambridge_user') || sessionStorage.getItem('cambridge_user')
+                let user = null
+                try { user = rawUser ? JSON.parse(rawUser) : null } catch(e) {}
+                const role = user?.role?.toLowerCase()
+                const canView = role === 'admin' || role === 'superadmin' || role === 'administrator'
+                return canView
+                  ? 'Thank you for submitting. Redirecting to Students Table...'
+                  : 'Thank you for submitting. Redirecting to Homepage...'
+              })()}
+            </p>
           </div>
         </div>
       )}

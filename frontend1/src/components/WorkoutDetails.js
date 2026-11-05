@@ -9,8 +9,11 @@ const WorkoutDetails = ({ workout }) => {
 
   const handleClick = async () => {
     try {
+      const token = localStorage.getItem('cambridge_token') || sessionStorage.getItem('cambridge_token')
+      const headers = token ? { 'Authorization': `Bearer ${token}` } : {}
       const response = await fetch(`${API_URL}/api/workouts/${workout._id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers
       })
       const json = await response.json()
 

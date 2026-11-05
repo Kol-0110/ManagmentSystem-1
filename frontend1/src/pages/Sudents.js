@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
 import { API_URL } from "../config"
 
@@ -8,10 +9,33 @@ import WorkoutDetails from "../components/WorkoutDetails"
 const Student = () => {
   const { workouts, dispatch } = useWorkoutsContext()
   const [searchTerm, setSearchTerm] = useState('')
+  const navigate = useNavigate()
+
+  // Verify authorization inside component
+  const rawUser = localStorage.getItem('cambridge_user') || sessionStorage.getItem('cambridge_user')
+  let user = null
+  try {
+    user = rawUser ? JSON.parse(rawUser) : null
+  } catch (e) {
+    user = null
+  }
+  const role = user?.role?.toLowerCase()
+  const isAuthorized = role === 'admin' || role === 'superadmin' || role === 'administrator'
 
   useEffect(() => {
+    if (!user) {
+      navigate('/Login', { replace: true })
+      return
+    }
+    if (!isAuthorized) {
+      navigate('/', { replace: true })
+      return
+    }
+
     const fetchWorkouts = async () => {
-      const response = await fetch(`${API_URL}/api/workouts`)
+      const token = localStorage.getItem('cambridge_token') || sessionStorage.getItem('cambridge_token')
+      const headers = token ? { 'Authorization': `Bearer ${token}` } : {}
+      const response = await fetch(`${API_URL}/api/workouts`, { headers })
       const json = await response.json()
 
       if (response.ok) {
@@ -20,7 +44,11 @@ const Student = () => {
     }
 
     fetchWorkouts()
-  }, [dispatch])
+  }, [dispatch, isAuthorized, user, navigate])
+
+  if (!user || !isAuthorized) {
+    return null
+  }
 
   // Filter students by first name, last name, or full name
   const filteredWorkouts = workouts

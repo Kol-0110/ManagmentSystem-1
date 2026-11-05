@@ -32,7 +32,24 @@ const SuperAdminRoute = ({ children }) => {
   } catch (e) {
     user = null;
   }
-  return user && user.role === 'superadmin' ? children : <Navigate to="/" replace />;
+  return user && user.role?.toLowerCase() === 'superadmin' ? children : <Navigate to="/" replace />;
+};
+
+// Admin & Super Admin Only Route: strictly verifies user has role === 'admin' or 'superadmin'
+const AdminRoute = ({ children }) => {
+  const rawUser = localStorage.getItem('cambridge_user') || sessionStorage.getItem('cambridge_user');
+  let user = null;
+  try {
+    user = rawUser ? JSON.parse(rawUser) : null;
+  } catch (e) {
+    user = null;
+  }
+  if (!user) {
+    return <Navigate to="/Login" replace />;
+  }
+  const role = user.role ? user.role.toLowerCase() : '';
+  const isAuthorized = role === 'admin' || role === 'superadmin' || role === 'administrator';
+  return isAuthorized ? children : <Navigate to="/" replace />;
 };
 
 function App() {
@@ -98,9 +115,17 @@ function App() {
             <Route
               path="/Students"
               element={
-                <ProtectedRoute>
+                <AdminRoute>
                   <Student />
-                </ProtectedRoute>
+                </AdminRoute>
+              }
+            />
+            <Route
+              path="/students"
+              element={
+                <AdminRoute>
+                  <Student />
+                </AdminRoute>
               }
             />
 

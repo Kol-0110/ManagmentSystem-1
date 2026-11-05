@@ -1,31 +1,32 @@
 const express = require('express')
 const {
-  getWorkouts, 
-  getWorkout, 
-  createWorkout, 
+  getWorkouts,
+  getWorkout,
+  createWorkout,
   loginWorkout,
-  deleteWorkout, 
+  deleteWorkout,
   updateWorkout
 } = require('../controllers/workoutController')
+const { protect, requireAdmin } = require('../middleware/authMiddleware')
 
 const router = express.Router()
 
 // POST login
 router.post('/login', loginWorkout)
 
-// GET all workouts
-router.get('/', getWorkouts)
-
-// GET a single workout
-router.get('/:id', getWorkout)
-
-// POST a new workout
+// POST a new workout (student admission / enrollment submission - public)
 router.post('/', createWorkout)
 
-// DELETE a workout
-router.delete('/:id', deleteWorkout)
+// GET all workouts (only Super Admin and Admin)
+router.get('/', protect, requireAdmin, getWorkouts)
 
-// UPDATE a workout
-router.patch('/:id', updateWorkout)
+// GET a single workout (only Super Admin and Admin)
+router.get('/:id', protect, requireAdmin, getWorkout)
+
+// DELETE a workout (only Super Admin and Admin)
+router.delete('/:id', protect, requireAdmin, deleteWorkout)
+
+// UPDATE a workout (only Super Admin and Admin)
+router.patch('/:id', protect, requireAdmin, updateWorkout)
 
 module.exports = router
